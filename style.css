@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wordGuess {
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #lifeDisplay {
+    font-weight: bold;
+    color: red;
+  }
+  
+  label {
+    display: block; /* blocco per posizionarlo sotto l'input */
+    margin-top: 10px;
+  }
+  
+  #userinput {
+    width: 200px;
+    padding: 5px;
+  }
+  
+  #btn {
+    background-color: #15d936;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #btn:hover {
+    background-color: rgb(30, 88, 189); /* altro colore al passaggio del mouse */
+  }
+  
+  #winLose {
+    font-weight: bold;
+    margin-top: 20px;
+    color: rgb(255, 0, 0);
+  }
+  
