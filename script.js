@@ -17,11 +17,11 @@ btn.addEventListener("click", function () {
     userInput.value = "";
     wordGuess.innerText = displayGuess;
     lifeDisplay.innerText = lifeCounter;
-    checkEnd (lifeCounter, displayGuess);
+    checkEnd ();
     return
 })
 
-function checkEnd (lifeCounter, displayGuess){
+function checkEnd (){
     let wonLost = document.getElementById("winLose");
     if (lifeCounter === 0) {
         
@@ -62,4 +62,14 @@ function checkGuess(guess, letter) {
     }
 
     return guess.join('');
+}
+
+
+function checkIfOneLetter(letter){
+    let alfabeto = "qwertyuiopasdfghjklzxcvbnm".split("");
+    for (let item of alfabeto){
+        if (letter === item){
+            return
+        }
+    }
 }
