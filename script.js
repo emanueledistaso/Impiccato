@@ -1,16 +1,38 @@
 let word = "impiccato";
 let wordGuess = document.getElementById("wordGuess");
 let lifeCounter = 5;
+let lifeDisplay = document.getElementById("lifeDisplay");
 
 let displayGuess = "#".repeat(word.length);
 wordGuess.innerText = displayGuess;
 
-let userInput = document.getElementById("userInput");
+let userInput = document.getElementById("userinput");
 let btn = document.getElementById("btn");
 
+lifeDisplay.innerText = lifeCounter;
+
+btn.addEventListener("click", function () {
+    displayGuess = checkGuess(displayGuess, userInput.value);
+    console.log(displayGuess);
+    userInput.value = "";
+    wordGuess.innerText = displayGuess;
+    lifeDisplay.innerText = lifeCounter;
+    checkEnd (lifeCounter, displayGuess);
+    return
+})
+
+function checkEnd (lifeCounter, displayGuess){
+    let wonLost = document.getElementById("winLose");
+    if (lifeCounter === 0) {
+        
+        wonLost.innerText = "Game Over! You lost!";
+    } else if (displayGuess == word) {
+        wonLost.innerText = "Congratulations you won!"
+    }
+}
 
 //displayGuess = checkGuess (displayGuess, 'x');
-console.log (checkGuess('imp----to', 'c'));
+console.log(checkGuess('imp----to', 'c'));
 //Todo: aggiungere event listener al btn che fa partire una funzione che:
 // 1. prima controlla che l'utente abbia inserito una sola lettera e che questa sia valida
 // 2. e se appare me la mostra a schermo e la elimina dalle lettere indovinabili
@@ -21,24 +43,23 @@ console.log (checkGuess('imp----to', 'c'));
 
 
 
-function checkGuess (guess, letter) {
+function checkGuess(guess, letter) {
     // Supponiamo che l'input sia sanificato da un'altra function
     // l'idea è quella di controllare tutta la stringa lettera a lettera e dove trovo 
     // coincidenze vado a modificare display guess
-        let lostLife = true ;
-        guess = guess.split('');
-        console.log(guess);
-        for (let index in word){
-            if (letter == word[index]){ 
-                guess[index] = letter;
-                lostLife = false;
-            }
+    let lostLife = true;
+    guess = guess.split('');
+    // console.log(guess);
+    for (let index in word) {
+        if (letter == word[index]) {
+            guess[index] = letter;
+            lostLife = false;
         }
+    }
 
-        if (lostLife) {
-            lifeCounter -= 1;
-        }
+    if (lostLife) {
+        lifeCounter -= 1;
+    }
 
-        guess = guess.join('');
-    return guess;
+    return guess.join('');
 }
